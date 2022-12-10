@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: aml_environment_3
+image: docker.io/pytorch/pytorch:latest
+conda_file: conda.yml

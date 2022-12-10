@@ -1,0 +1,17 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+
+type: command
+description: Trains a simple neural network on the Fashion-MNIST dataset.
+experiment_name: "aml_environment_1"
+compute: azureml:cluster-gpu
+
+inputs:
+  fashion_mnist:
+    path: azureml:data-fashion-mnist@latest
+outputs:
+  model:
+    type: mlflow_model
+
+code: ../../src
+environment: azureml:AzureML-ACPT-pytorch-1.12-py39-cuda11.6-gpu@latest
+command: python train.py --data_dir ${{inputs.fashion_mnist}} --model_dir ${{outputs.model}}
